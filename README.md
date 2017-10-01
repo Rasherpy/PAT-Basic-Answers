@@ -125,6 +125,64 @@ APAAATAA<br>
 **输出样例：**  
 NO
 ### 代码
+# Q1004：成绩排名
+读入n名学生的姓名、学号、成绩，分别输出成绩最高和成绩最低学生的姓名和学号。<br>
+**输入格式：** <br>
+每个测试输入包含1个测试用例，格式为<br>
+  第1行：正整数n<br>
+  第2行：第1个学生的姓名 学号 成绩<br>
+  第3行：第2个学生的姓名 学号 成绩<br>
+  ... ... ...<br>
+  第n+1行：第n个学生的姓名 学号 成绩<br>
+其中姓名和学号均为不超过10个字符的字符串，成绩为0到100之间的一个整数，这里保证在一组测试用例中没有两个学生的成绩是相同的。<br>
+**输出格式：**<br>
+对每个测试用例输出2行，第1行是成绩最高学生的姓名和学号，第2行是成绩最低学生的姓名和学号，字符串间有1空格。<br>
+**输入样例：**  
+3<br>
+Joe Math990112 89<br>
+Mike CS991301 100<br>
+Mary EE990830 95<br>
+**输出样例：**  
+Mike CS991301<br>
+Joe Math990112
+### 代码
+```
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+struct node
+{
+ char name[20];
+ char number[20];
+ int score;
+}student[105];
+  
+int main()
+{
+  int i;
+  int max=0,min=0;
+ int n;
+  cin>>n;
+  for(i=0;i<n;i++)
+  {
+    cin>>student[i].name;
+    cin>>student[i].number;
+     cin>>student[i].score;
+  }
+  for(i=0;i<n;i++)
+  {
+    if(student[i].score>student[max].score)
+      max=i;
+    if(student[i].score<student[min].score)
+      min=i;
+  }
+  cout<<student[max].name<<" "<<student[max].number<<endl;
+  cout<<student[min].name<<" "<<student[min].number<<endl;
+  return 0;
+}
+```
 # Q1046:划拳
 划拳是古老中国酒文化的一个有趣的组成部分。酒桌上两人划拳的方法为：每人口中喊出一个数字，同时用手比划出一个数字。如果谁比划出的数字正好等于两人喊出的数字之和，谁就赢了，输家罚一杯酒。两人同赢或两人同输则继续下一轮，直到唯一的赢家出现。下面给出甲、乙两人的划拳记录，请你统计他们最后分别喝了多少杯酒。<br>
 **输入格式：** <br>
