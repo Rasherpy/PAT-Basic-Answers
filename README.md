@@ -200,7 +200,67 @@ Case #1: false<br>
 Case #2: true<br>
 Case #3: true<br>
 Case #4: false<br>
-### 代码：
+### 代码一：
+```
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    long int A,B,C; //注意范围所以用long int定义A,B,C;
+    
+    int i;
+    
+    int T;
+    
+    cin>>T;
+
+    for(i=1;i<=T;i++)
+    {
+        cin>>A>>B>>C;
+        
+        if(A+B>C)
+        {
+            cout<<"Case #"<<i<<": true"<<endl;
+        }
+        else
+        {
+            cout<<"Case #"<<i<<": false"<<endl;
+        }
+    }
+    
+    return 0;
+}
+```
+### 代码二：
+```
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    long int A,B,C;
+    
+    int T;
+    
+    int X=1;
+    
+    cin>>T;
+    
+    while(T--)
+    {
+      cin>>A>>B>>C;
+      if(A+B>C)
+      cout<<"Case #"<<X++<<": true"<<endl;   
+      else
+      cout<<"Case #"<<X++<<": false"<<endl;     
+                           
+    }
+    return 0;
+}
+```
 # Q1046:划拳
 划拳是古老中国酒文化的一个有趣的组成部分。酒桌上两人划拳的方法为：每人口中喊出一个数字，同时用手比划出一个数字。如果谁比划出的数字正好等于两人喊出的数字之和，谁就赢了，输家罚一杯酒。两人同赢或两人同输则继续下一轮，直到唯一的赢家出现。下面给出甲、乙两人的划拳记录，请你统计他们最后分别喝了多少杯酒。<br>
 **输入格式：** <br>
