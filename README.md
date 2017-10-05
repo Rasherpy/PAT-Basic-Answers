@@ -343,7 +343,38 @@ int main()
 123 456 8<br>
 **输出样例：**  
 1103<br>
-### 代码：
+### 代码(部分正确18/20)：
+```
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string ad(int num,int D)
+{
+    string i = "";
+    
+    while(num != 0)
+    {
+        i = char(num % D + '0') + i;
+        num /= D;
+    }
+    return i;
+}
+
+int main(void)
+{
+    int A,B,D;
+    
+    cin>>A>>B>>D;
+    
+    cout<<ad(A+B,D)<<endl;
+    
+    return 0;
+}
+```
+### 代码二：
 ```
 
 ```
