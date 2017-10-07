@@ -243,7 +243,7 @@ int main()
   return 0;
 }
 ```
-# Q1005：继续(3n+1)猜想
+# Q1005：继续(3n+1)猜想 *
 卡拉兹(Callatz)猜想已经在1001中给出了描述。在这个题目里，情况稍微有些复杂。<br>
 当我们验证卡拉兹猜想的时候，为了避免重复计算，可以记录下递推过程中遇到的每一个数。例如对n=3进行验证的时候，我们需要计算3、5、8、4、2、1，则当我们对n=5、8、4、2进行验证的时候，就可以直接判定卡拉兹猜想的真伪，而不需要重复计算，因为这4个数已经在验证3的时候遇到过了，我们称5、8、4、2是被3“覆盖”的数。我们称一个数列中的某个数n为“关键数”，如果n不能被数列中的其他数字所覆盖。<br>
 现在给定一系列待验证的数字，我们只需要验证其中的几个关键数，就可以不必再重复验证余下的数字。你的任务就是找出这些关键数字，并按从大到小的顺序输出它们。<br>
@@ -257,6 +257,66 @@ int main()
 **输出样例：**  
 7 6<br>
 ### 代码：
+```
+#include <iostream>
+#include <vector>
+#include <algorithm> 
+using namespace std;
+
+bool compare(int i, int j){
+	return j<i;
+}
+int main() {
+	int n(0); //待验证整数个数
+	cin >> n;
+	vector<int> a(100);   //记录（3n+1)过程中出现每个数的次数 
+	vector<int> b(n);   //保存每个待验证整数
+	vector<int>::iterator it;
+	for(it=b.begin();it!=b.end();it++){
+		int temp;
+		cin >> *it;
+		temp = *it;
+		a[temp]++;
+		if(temp==1){
+			a[temp]++;
+		}else{
+			while(temp!=1){
+				if(temp%2==0){
+					temp/=2;
+					if(temp<=100)    //超过100无意义，不需记录 
+					a[temp]++;
+				}else{
+					temp=(3*temp+1)/2;
+					if(temp<=100)
+					a[temp]++;
+				}
+			}
+		}
+	}
+	
+	sort(b.begin(),b.end(),compare);  //按降序排序
+	int count(0);  //记录关键数个数 
+	vector<int> key(1);  // 保存关键数 
+	for(it=b.begin();it!=b.end();it++){
+		if(a[*it]==1){
+			key[count++]=*it;
+			key.resize(count+1);
+		} 
+	} 
+	
+	//按要求输出结果 
+	for(it=key.begin();it!=key.end()-1;it++){
+		
+		if(it!=key.end()-2){
+			cout << *it << " ";
+		}
+		else{
+			cout << *it;
+		}
+	}
+	return 0;
+}
+```
 # Q1006：换个格式输出整数
 让我们用字母B来表示“百”、字母S表示“十”，用“12...n”来表示个位数字n（<10），换个格式来输出任一个不超过3位的正整数。例如234应该被输出为BBSSS1234，因为它有2个“百”、3个“十”、以及个位的4。<br>
 **输入格式：** <br>
