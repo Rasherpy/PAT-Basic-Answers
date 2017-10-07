@@ -330,6 +330,39 @@ int main() {
 BBSSS1234<br>
 SS123<br>
 ### 代码：
+```
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    cin>>n;
+    
+    int i,j,k;
+    i = n/100;
+    j = (n-i*100)/10;
+    k = n%10;
+    int x;
+    
+    for(x=0;x<i;x++)
+    {
+        cout<<"B";
+    }
+    
+    for(x=0;x<j;x++)
+    {
+        cout<<"S";
+    }
+    for(x=1;x<=k;x++)
+    {
+        cout<<x;
+    }
+    return 0;
+}
+
+```
 # Q1007：素数对猜想
 让我们定义 dn 为：dn = pn+1 - pn，其中 pi 是第i个素数。显然有 d1=1 且对于n>1有 dn 是偶数。“素数对猜想”认为“存在无穷多对相邻且差为2的素数”。现给定任意正整数N (< 105)，请计算不超过N的满足猜想的素数对的个数。<br>
 **输入格式：** <br>
