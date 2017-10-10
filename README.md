@@ -363,7 +363,7 @@ int main()
 }
 
 ```
-# Q1007：素数对猜想
+# Q1007：素数对猜想 *
 让我们定义 dn 为：dn = pn+1 - pn，其中 pi 是第i个素数。显然有 d1=1 且对于n>1有 dn 是偶数。“素数对猜想”认为“存在无穷多对相邻且差为2的素数”。现给定任意正整数N (< 105)，请计算不超过N的满足猜想的素数对的个数。<br>
 **输入格式：** <br>
 每个测试输入包含1个测试用例，给出正整数N。<br>
@@ -374,6 +374,48 @@ int main()
 **输出样例：**  
 4<br>
 ### 代码：
+```
+#include<iostream>
+#include<string>
+using namespace std;
+
+bool issushu(int n){
+	bool flag=true;
+	for(int j=3;j*j<=n;j++){
+		if(n%j==0){
+			flag=false;   //能整出，则false
+		}
+	}
+	return flag;
+}
+
+int main(){
+	unsigned int n;
+	cin>>n;
+	unsigned int i=7,count=1;
+	if(n<5)
+		cout<<'0';
+	else{
+		bool front,now;
+		
+		front=true; //3是素数
+		now=true; //5是素数
+		while(i<=n){
+			front=now;
+			now=issushu(i);
+			if(now==true&&front==true){
+				count++;
+			}
+			i=i+2;
+		}
+			cout<<count;
+	}
+
+	system("pause");
+	return 0;
+}
+
+```
 # Q1008：数组元素循环右移问题
 一个数组A中存有N（N>0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（M>=0）个位置，即将A中的数据由（A0 A1……AN-1）变换为（AN-M …… AN-1 A0 A1……AN-M-1）（最后M个数循环移至最前面的M个位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？<br>
 **输入格式：** <br>
