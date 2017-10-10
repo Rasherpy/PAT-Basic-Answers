@@ -410,13 +410,11 @@ int main(){
 		}
 			cout<<count;
 	}
-
-	system("pause");
 	return 0;
 }
 
 ```
-# Q1008：数组元素循环右移问题
+# Q1008：数组元素循环右移问题 *
 一个数组A中存有N（N>0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（M>=0）个位置，即将A中的数据由（A0 A1……AN-1）变换为（AN-M …… AN-1 A0 A1……AN-M-1）（最后M个数循环移至最前面的M个位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？<br>
 **输入格式：** <br>
 每个输入包含一个测试用例，第1行输入N ( 1<=N<=100)、M（M>=0）；第2行输入N个整数，之间用空格分隔。<br>
@@ -428,6 +426,51 @@ int main(){
 **输出样例：**  
 5 6 1 2 3 4<br>
 ### 代码：
+```
+#include <iostream>
+using namespace std;
+
+class Solutions{
+public:
+    void reverse(int arr[],int prev,int back)
+    {
+        int tmp;
+        while(prev<back)
+        {
+            tmp = arr[back];
+            arr[back] = arr[prev];
+            arr[prev] = tmp;
+            ++prev;
+            --back;
+        }
+    }
+
+    void print(int arr[],int prev,int back)
+    {
+        for(int i=prev;i<back;++i)
+        {
+            cout << arr[i];
+            if(i!=back-1)
+                cout << ' ';
+        }
+    }
+};
+
+int main()
+{
+    Solutions s;
+    int size,number;
+    cin >> size >> number;
+    int a[100];
+    for(int i=0;i<size;++i)
+        cin >> a[i];
+    number = number%size;
+    s.reverse(a,0,size-1-number);
+    s.reverse(a,size-number,size-1);
+    s.reverse(a,0,size-1);
+    s.print(a,0,size);
+}
+```
 # Q1009：说反话 *
 给定一句英语，要求你编写程序，将句中所有单词的顺序颠倒输出。<br>
 **输入格式：** <br>
