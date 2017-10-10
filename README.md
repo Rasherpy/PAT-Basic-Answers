@@ -426,6 +426,73 @@ int main(){
     return 0;
 }
 ```
+### 代码(纯粹的顺次扫描来拆分)：
+```
+#include<iostream>
+#include<string.h>
+#include<vector>
+using namespace std;
+int main()
+{
+	vector<string> v;
+	string str;
+	getline(cin,str);
+	string tmp="";
+	for(int i=0;i<str.length();i++)
+	{
+		if(str[i]=='\n')
+			break;
+		if(str[i]!=' ')
+			tmp += str[i];
+		else
+		{
+			v.push_back(tmp);
+			tmp="";
+		}
+	}
+	v.push_back(tmp);
+	for(int i=v.size()-1;i>=0;i--)
+	{
+		if(i!=0)
+			cout<<v[i]<<" ";
+		else
+			cout<<v[i];
+	}
+	system("pause");
+	return 0;
+}
+```
+### 代码(用strtok函数切分)：
+```
+#include<iostream>
+#include<string.h>
+#include<vector>
+using namespace std;
+int main()
+{
+	char str[80];
+	const char *ch = " ";
+	char *result;
+	vector<char *> v;
+	gets(str);//注意用的是gets()可以连带空格都扫描进去
+
+	result = strtok(str,ch);
+	while(result!=NULL)
+	{
+		v.push_back(result);
+		result = strtok(NULL,ch);
+	}
+	for(int i=v.size()-1;i>=0;i--)
+	{
+		if(i!=0)
+			cout<<v[i]<<" ";
+		else
+			cout<<v[i];
+	}
+	system("pause");
+	return 0;	
+}
+```
 # Q1010：一元多项式求导
 设计函数求一元多项式的导数。（注：xn（n为整数）的一阶导数为n*xn-1。）<br>
 **输入格式：** <br>
@@ -854,12 +921,13 @@ Address Data Next<br>
 ```
 # Q1027：打印沙漏
 本题要求你写个程序把给定的符号打印成沙漏的形状。例如给定17个“ * ”，要求按下列格式打印<br>
-***** <br>
- *** <br>
-  * <br>
- *** <br>
-***** <br>
-
+```
+***** 
+ *** 
+  * 
+ *** 
+***** 
+```
 所谓“沙漏形状”，是指每行输出奇数个符号；各行符号中心对齐；相邻两行符号数差2；符号数先从大到小顺序递减到1，再从小到大顺序递增；首尾符号数相等。<br>
 给定任意N个符号，不一定能正好组成一个沙漏。要求打印出的沙漏能用掉尽可能多的符号。<br>
 **输入格式：** <br>
@@ -868,13 +936,15 @@ Address Data Next<br>
 首先打印出由给定符号组成的最大的沙漏形状，最后在一行中输出剩下没用掉的符号数。<br>
 **输入样例：**  
 19 *<br>
-**输出样例：**  
-***** <br>
- *** <br>
-  * <br>
- *** <br>
-***** <br>
-2 <br>
+** 输出样例：**
+```
+***** 
+ *** 
+  * 
+ *** 
+***** 
+2 
+```
 ### 代码：
 ```
 ```
