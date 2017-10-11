@@ -844,6 +844,110 @@ J J<br>
 B B<br>
 ### 代码：
 ```
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int N;
+    cin>>N;
+    int csj=0,jsj=0,bsj=0;
+    int csy=0,jsy=0,bsy=0;
+    int js=0,jp=0,jf=0;
+    int ys=0,yp=0,yf=0;
+    char x,y;
+    for(int i=0;i<N;i++)
+    {
+        cin>>x>>y;//输入字符串可以用cin，也可以用scanf
+        
+        if((x=='C') && (y=='C'))//输入CJB都是字符要加''
+        {
+            ++jp,++yp;
+        }
+        
+        if((x=='J') && (y=='J'))
+        {
+            ++jp,++yp;
+        }
+        
+        if((x=='B') && (y=='B'))
+        {
+            ++jp,++yp;
+        }
+        
+        if((x=='C') && (y=='J'))
+        {
+            ++js,++yf;
+            ++csj;
+        }
+        
+        if((x=='C') && (y=='B'))
+        {
+            ++jf,++ys;
+            ++bsy;
+        }
+        
+        if((x=='J') && (y=='C'))
+        {
+            ++jf,++ys;
+            ++csy;
+        }
+        
+        if((x=='J') && (y=='B'))
+        {
+            ++js,++yf;
+            ++jsj;
+        }
+        
+        if((x=='B') && (y=='C'))
+        {
+            ++js,++yf;
+            ++bsj;
+        }
+        
+        if((x=='B') && (y=='J'))
+        {
+            ++jf,++ys;
+            ++jsy;
+        }
+    }
+    
+    cout<<js<<" "<<jp<<" "<<jf<<endl;
+    cout<<ys<<" "<<yp<<" "<<yf<<endl;
+    
+    if((bsj>=csj) && (bsj>=jsj))
+    {
+        cout<<"B"<<" ";
+    }
+    
+    else if((csj>=jsj) && (csj>=bsj))
+    {
+        cout<<"C"<<" ";
+    }
+    
+    else
+    {
+        cout<<"J"<<" ";
+    }
+    
+    if((bsy>=csy) && (bsy>=jsy))
+    {
+        cout<<"B";
+    }
+    
+    else if((csy>=jsy) && (csy>=bsy))
+    {
+        cout<<"C";
+    }
+    
+    else
+    {
+        cout<<"J";
+    }
+    
+    return 0;
+}
 ```
 # Q1019：数字黑洞
 给定任一个各位数字不完全相同的4位正整数，如果我们先把4个数字按非递增排序，再按非递减排序，然后用第1个数字减第2个数字，将得到一个新的数字。一直重复这样做，我们很快会停在有“数字黑洞”之称的6174，这个神奇的数字也叫Kaprekar常数。<br>
