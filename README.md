@@ -1358,6 +1358,47 @@ aaaaaaaaaa
 3 2 0<br>
 ### 代码：
 ```
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    cin>>n;
+    
+    int score[101] = {0}; //定义数组数据为0，分数为下标。
+    
+    for(int i=0;i<n;i++)
+    {
+        int temp;
+        cin>>temp;
+        
+        if((temp>=0) && (temp<=0)) //注意这种类型的的if条件中要加()
+        {
+            score[temp]++;
+        }
+    }
+    
+    int m;
+    cin>>m;
+    
+    for(int i=0;i<m;i++)
+    {
+        int temp;
+        cin>>temp;
+        
+        if(i)
+            cout<<" "<<score[temp];
+        else
+        {
+            cout<<score[temp];
+        }
+    }
+    return 0;
+}
+
+
 ```
 # Q1039：到底买不买
 小红想买些珠子做一串自己喜欢的珠串。卖珠子的摊主有很多串五颜六色的珠串，但是不肯把任何一串拆散了卖。于是小红要你帮忙判断一下，某串珠子里是否包含了全部自己想要的珠子？如果是，那么告诉她有多少多余的珠子；如果不是，那么告诉她缺了多少珠子。<br>
