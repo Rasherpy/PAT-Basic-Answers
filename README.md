@@ -1362,6 +1362,46 @@ aaaaaaaaaa
 ```
 ### 代码：
 ```
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    char c;
+    
+    scanf("%d %c",&n,&c);
+    
+    for(int i=0;i<n;i++)
+    {
+        printf("%c",c);
+    }
+    
+    printf("\n");
+
+    
+    int m= (int)(n*0.5+0.5);//注意四舍五入时数据类型的变化
+    
+    for(int i =0;i<m-2;i++)//四舍五入用n/2+0.5,而且还要考虑去掉上下两行-2
+    {
+        printf("%c",c);
+        for(int j=0;j<n-2;j++)
+            printf(" ");
+        printf("%c",c);
+        printf("\n");
+    }
+        
+    for(int i=0;i<n;i++)
+    {
+        printf("%c",c);
+    }
+    printf("\n");
+
+    
+    return 0;
+}
 ```
 # Q1037：在霍格沃茨找零钱
 如果你是哈利·波特迷，你会知道魔法世界有它自己的货币系统 —— 就如海格告诉哈利的：“十七个银西可(Sickle)兑一个加隆(Galleon)，二十九个纳特(Knut)兑一个西可，很容易。”现在，给定哈利应付的价钱P和他实付的钱A，你的任务是写一个程序来计算他应该被找的零钱。<br>
