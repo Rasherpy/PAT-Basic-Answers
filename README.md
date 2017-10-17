@@ -1667,6 +1667,35 @@ int main()
 11 176<br>
 ### 代码：
 ```
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int team,member,score;
+    int j=0;
+    int max=0;
+    
+    int a[1001] = {0};
+    
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d-%d %d",&team,&member,&score);
+        a[team] = a[team] + score;
+        if(a[team]>max)
+        {
+            max = a[team];
+            j = team;
+        }
+    }
+    
+    printf("%d %d",j,max);
+    
+    return 0;
+}
 ```
 # Q1048：数字加密
 本题要求实现一种数字加密方法。首先固定一个加密用正整数A，对任一正整数B，将其每1位数字与A的对应位置上的数字进行以下运算：对奇数位，对应位的数字相加后对13取余——这里用J代表10、Q代表11、K代表12；对偶数位，用B的数字减去A的数字，若结果为负数，则再加10。这里令个位为第1位。<br>
