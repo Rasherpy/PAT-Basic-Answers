@@ -1261,6 +1261,38 @@ M：1 0 X 9 8 7 6 5 4 3 2<br>
 2 150<br>
 ### 代码：
 ```
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    
+    int number,score;
+    int j=0;
+
+    int a[100001] = {0};
+    
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d %d",&number,&score);
+        a[number] = a[number] + score;
+    }
+    
+    for(int i=1;i<100000;i++)
+    {
+                if (a[i]>a[j])
+        {
+            j = i;
+        }
+    }
+    
+    printf("%d %d",j,a[j]);
+    
+    return 0;
+}
 ```
 # Q1033：旧键盘打字
 旧键盘上坏了几个键，于是在敲一段文字的时候，对应的字符就不会出现。现在给出应该输入的一段文字、以及坏掉的那些键，打出的结果文字会是怎样？<br>
