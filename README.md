@@ -1520,6 +1520,45 @@ APPAPT<br>
 10120150912119 1<br>
 ### 代码：
 ```
+#include <iostream>
+
+struct Student
+{
+    char zh[20];
+    int sh;
+    int kh;
+};
+
+int main()
+{
+    Student student[1001];
+    int N;
+    int i,j;
+    scanf("%d",&N);
+    
+    for (i=0;i<N;i++)
+    {
+        scanf("%s%d%d",student[i].zh,&student[i].sh,&student[i].kh);//数组不用加&
+    }
+    
+    int M;
+    scanf("%d",&M);
+    
+    int test[1001];//用int型
+    
+    for(j=0;j<M;j++)
+    {
+        scanf("%d",&test[j]);
+        for(int k=0;k<N;k++)
+        {
+            if(test[j] == student[k].sh)
+                printf("%s %d\n",student[k].zh,student[k].kh);
+        }
+        
+    }
+    
+    return 0;
+}
 ```
 # Q1042：字符统计
 请编写程序，找出一段给定文字中出现最频繁的那个英文字母。<br>
