@@ -1572,6 +1572,52 @@ This is a simple TEST.  There ARE numbers and other symbols 1&2&3...........<br>
 e 7<br>
 ### 代码：
 ```
+#include <iostream>
+#include <string.h>
+#include <stdio.h>
+
+using namespace std;
+
+char a[1001];
+int d[129]={0};
+int l;
+int maxx=0;
+int id=-1;
+
+int main()
+{
+    //用gets()时记住头文件调用#include<string.h>
+    gets(a);
+    
+    l = (int)strlen(a);
+    
+    for(int i=0; i<l; i++)
+    {
+        if(a[i]>='A' && a[i]<='Z')
+            
+            a[i]+=32;
+        
+        if(a[i]>='a' && a[i]<='z')
+        {
+            //d[a[i]-0]也对，d[a[i]-'0']不对
+            d[a[i]]++;
+            
+        }
+    }
+    
+    for(int i=96; i<=122; i++)
+    {
+        if(d[i]>maxx)
+        {
+            maxx=d[i];
+            id=i;
+        }
+    }
+    printf("%c %d",id,maxx);
+    
+    
+    return 0;
+}
 ```
 # Q1043：输出PATest
 给定一个长度不超过10000的、仅由英文字母构成的字符串。请将字符重新调整顺序，按“PATestPATest....”这样的顺序输出，并忽略其它字符。当然，六种字符的个数不一定是一样多的，若某种字符已经输出完，则余下的字符仍按PATest的顺序打印，直到所有字符都被输出。<br>
