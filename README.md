@@ -12,47 +12,7 @@ PAT基础试题解析
 3<br>
 **输出样例：**  
 5<br>
-### 代码一（运算超时待解决）
-```
-#include <iostream>
-using namespace std;
-int count(int n)
-{
-    int step = 1;
-    while (n != 0)
-    {n=(n%2)? (3*n +1)/2 : n /= 2;step++;}
-    return step;
-}
-int main()
-{
-    int n;
-    cin >> n;
-    cout << count(n);
-    return 0;
-}
-```
-### 代码二（编译通过）
-```
-#include <iostream>
-using namespace std;
-int main() {
-    int n,step = 0;
-    cin >> n;
-    while (n!=1) {
-        if(n%2 == 0)
-        {
-            n = n/2;
-        }
-        else
-        {
-            n = (3*n + 1)/2;
-        }
-        ++step;
-    }
-    cout<<step<<endl;
-    return 0;
-}
-```
+[代码](https://github.com/Rasherpy/PAT-Basic-Answers/blob/master/1.cpp)
 # Q1002：写出这个数
 读入一个自然数n，计算其各位数字之和，用汉语拼音写出和的每一位数字。<br>
 **输入格式：** <br>
