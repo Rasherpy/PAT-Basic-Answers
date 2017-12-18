@@ -36,8 +36,8 @@ yi san wu<br>
 每个字符串的检测结果占一行，如果该字符串可以获得“答案正确”，则输出YES，否则输出NO。<br>
 **输入样例：**  
 APAAATAA<br>
-**输出样例：**  <br>
-NO
+**输出样例：**  
+NO<br>
 [代码](https://github.com/Rasherpy/PAT-Basic-Answers/blob/master/3.cpp)
 # Q1004：成绩排名
 读入n名学生的姓名、学号、成绩，分别输出成绩最高和成绩最低学生的姓名和学号。<br>
