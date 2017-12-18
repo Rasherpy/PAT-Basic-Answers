@@ -23,53 +23,7 @@ PAT基础试题解析
 1234567890987654321123456789<br>
 **输出样例：**  
 yi san wu<br>
-### 代码：
-```
-#include<iostream>
-using namespace std;
-
-
-void int_pinyin(int a){
-	switch(a){
-		case 0:cout<<"ling";break;
-		case 1:cout<<"yi";break;
-		case 2:cout<<"er";break;
-		case 3:cout<<"san";break;
-		case 4:cout<<"si";break;
-		case 5:cout<<"wu";break;
-		case 6:cout<<"liu";break;
-		case 7:cout<<"qi";break;
-		case 8:cout<<"ba";break;
-		case 9:cout<<"jiu";break;	
-	}
-}
-int main()
-{
-char a[101];
-cin>>a;
-int sum=0,i=0;
-while(a[i]!='\0'){
-	sum+=a[i]-'0';
-	++i;
-}
-int b[11],j=0;
-if(sum==0){
-	int_pinyin(0);
-	return 0;
-}
-while(sum!=0){
-	b[j]=sum%10;
-	sum=sum/10;
-	++j;
-}
-for(int i=j-1;i>0;--i){
-	int_pinyin(b[i]);
-	cout<<" ";
-}
-int_pinyin(b[0]);
-return 0;
-} 
-```
+[代码](https://github.com/Rasherpy/PAT-Basic-Answers/blob/master/2.cpp)
 # Q1003：我要通过！*
 “答案正确”是自动判题系统给出的最令人欢喜的回复。本题属于PAT的“答案正确”大派送 —— 只要读入的字符串满足下列条件，系统就输出“答案正确”，否则输出“答案错误”。得到“答案正确”的条件是：<br>
 1. 字符串中必须仅有P, A, T这三种字符，不可以包含其它字符；<br>
@@ -84,67 +38,7 @@ return 0;
 APAAATAA<br>
 **输出样例：**  
 NO
-### 代码：
-```
-#include <stdio.h>
-#include <iostream>
-#include <string.h>
-#include <string>
-#include <sstream>
-
-using namespace std;
-
-int main(){
-    int n;
-    char c[101];
-    scanf("%d", &n);
-    for(int i=0;i<n;i++){
-        bool result = true;
-        int count1 = 0, count2 = 0, count3 = 0;
-        int countP = 0, countT = 0;
-        scanf("%s", c);
-        for(int j=0;j<strlen(c);j++){
-            if(c[j] != 'P' && c[j] != 'A' && c[j] != 'T'){
-                result = false;
-                break;
-            }
-            if(c[j] == 'P'){
-                countP ++;
-                if(countP == 2){
-                    result = false;
-                    break;
-                }
-            }
-            if(c[j] == 'T'){
-                countT ++;
-                if(countT == 2){
-                    result = false;
-                    break;
-                }
-            }
-        }
-        if(result){
-            string s = c;
-            count1 = s.find("P");
-            count2 = s.find("A");
-            count3 = s.find("T");
-            if(count1 == -1 || count2 == -1 || count3 == -1){
-                result = false;
-            }
-            else{
-                result = ((count1 * (count3 - count1 - 1)) == (strlen(c) - count3 - 1)) ? true : false;
-            }
-        }
-        if(result){
-            printf("YES\n");
-        }
-        else{
-            printf("NO\n");
-        }
-    }
-    return 0;
-}
-```
+[代码](https://github.com/Rasherpy/PAT-Basic-Answers/blob/master/3.cpp)
 # Q1004：成绩排名
 读入n名学生的姓名、学号、成绩，分别输出成绩最高和成绩最低学生的姓名和学号。<br>
 **输入格式：** <br>
