@@ -373,47 +373,7 @@ int main()
 20<br>
 **输出样例：**  
 4<br>
-### 代码：
-```
-#include<iostream>
-#include<string>
-using namespace std;
-
-bool issushu(int n){
-	bool flag=true;
-	for(int j=3;j*j<=n;j++){
-		if(n%j==0){
-			flag=false;   //能整出，则false
-		}
-	}
-	return flag;
-}
-
-int main(){
-	unsigned int n;
-	cin>>n;
-	unsigned int i=7,count=1;
-	if(n<5)
-		cout<<'0';
-	else{
-		bool front,now;
-		
-		front=true; //3是素数
-		now=true; //5是素数
-		while(i<=n){
-			front=now;
-			now=issushu(i);
-			if(now==true&&front==true){
-				count++;
-			}
-			i=i+2;
-		}
-			cout<<count;
-	}
-	return 0;
-}
-
-```
+[代码](https://github.com/Rasherpy/PAT-Basic-Answers/blob/master/7.cpp)
 # Q1008：数组元素循环右移问题 *
 一个数组A中存有N（N>0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（M>=0）个位置，即将A中的数据由（A0 A1……AN-1）变换为（AN-M …… AN-1 A0 A1……AN-M-1）（最后M个数循环移至最前面的M个位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？<br>
 **输入格式：** <br>
